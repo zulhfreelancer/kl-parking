@@ -1,0 +1,14 @@
+.container {
+    margin: 20px;
+}
+
+.pull-right {
+    right: 20px;
+    top: 25px; 
+    position: absolute;
+}
+
+.last-update{
+	display: block;
+	font-size: 12px;
+}
