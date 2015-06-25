@@ -6,3 +6,5 @@ platforms/
 google_play/
 my-release-key.keystore
 zipalign
+graphics/
+icon/
