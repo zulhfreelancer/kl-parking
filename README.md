@@ -1,4 +1,4 @@
-Hello!
+Ionic app for KL Parking app.
 
 #### API
 
@@ -6,4 +6,5 @@ Hello!
 
 #### To do
 
-- Pull to refresh
+- Add 'pull to refresh' feature OR 'refresh' button
+- Add Moment.js so that the 'Last update' datetime be like '2 minutes ago' 
