@@ -1,10 +1,14 @@
 <ion-view view-title="Parking">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="p in parking" href="#">
-        {{p.name}} <span class="pull-right">{{p.lot}}</span>
-        <span class="last-update">Last update: {{p.datetime}}</span>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-content>
+        <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+        <ion-list>
+            <ion-item ng-repeat="p in parking" href="#">
+                {{p.name}} <span class="pull-right">{{p.lot}}</span>
+                <span class="last-update">Last update: {{p.datetime}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="">
+        <span class="ft">Pull to refresh <i class="ion-ios-arrow-down"></i></span> 
+    </ion-footer-bar>
 </ion-view>

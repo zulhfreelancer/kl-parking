@@ -10,5 +10,9 @@
 
 .last-update{
 	display: block;
-	font-size: 12px;
+	font-size: 11px;
+}
+.ft{
+	color: #777;
+	margin: 0 auto;
 }

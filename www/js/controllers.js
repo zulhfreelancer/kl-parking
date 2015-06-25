@@ -2,9 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $timeout) {})
 
-.controller('ParkingCtrl', function($scope, $http) {
+.controller('AboutCtrl', function($scope, $stateParams) {})
 
-    $scope.parking = [{
+.controller('ParkingCtrl', function($scope, $http, $timeout) {
+
+    var parkingData = [{
         "name": "Sungei Wang Plaza",
         "lot": "Loading",
         "datetime": "Loading"
@@ -34,14 +36,46 @@ angular.module('starter.controllers', [])
         "datetime": "Loading"
     }];
 
-    $http.get('http://kl-parking-spots.herokuapp.com/').
-    success(function(data, status, headers, config) {
-        //console.log(data);
+    // Populate initial data with "loading" values from parkingData variable
+    $scope.parking = parkingData;
+
+    // Get data from API server
+    $http.get('http://kl-parking-spots.herokuapp.com/')
+    .success(function(data, status, headers, config) {
         $scope.parking = data;
-    }).
-    error(function(data, status, headers, config) {
-
+    })
+    .error(function(data, status, headers, config) {
+        $scope.parking = [{
+                            "name": "Unable to get the parking data",
+                            "lot": "",
+                            "datetime": ""
+                          }];
     });
-})
 
-.controller('AboutCtrl', function($scope, $stateParams) {});
+    // Pull to refresh
+    $scope.doRefresh = function() {
+
+        // Populate data with "loading" values again
+        $scope.parking = parkingData;
+
+        // Put data from API server back after 1 seconds
+        $timeout( function() {
+
+            $http.get('http://kl-parking-spots.herokuapp.com/').
+            success(function(data, status, headers, config) {
+                $scope.parking = data;
+            }).
+            error(function(data, status, headers, config) {
+                $scope.parking = [{
+                                    "name": "Unable to get the parking data",
+                                    "lot": "",
+                                    "datetime": ""
+                                  }];
+            });
+
+            // Stop the ion-refresher from spinning
+            $scope.$broadcast('scroll.refreshComplete');
+        
+        }, 1000);
+    };
+});
