@@ -22,7 +22,7 @@ Further tutorial can be found [here](https://blog.nraboy.com/2014/07/launch-exte
 
 #### To Do List
 
-- Add 'pull to refresh' feature OR 'refresh' button
+- ~~Add 'pull to refresh' feature OR 'refresh' button~~ DONE
 - Add [Moment.js](http://momentjs.com/) so that the 'Last update' datetime be like '2 minutes ago'
 
 #### App Icon
