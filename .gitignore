@@ -8,3 +8,4 @@ my-release-key.keystore
 zipalign
 graphics/
 icon/
+sample_data/
